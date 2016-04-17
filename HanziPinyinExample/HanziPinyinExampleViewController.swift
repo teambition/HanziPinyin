@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HanziPinyin
 
 class HanziPinyinExampleViewController: UIViewController {
     override func viewDidLoad() {

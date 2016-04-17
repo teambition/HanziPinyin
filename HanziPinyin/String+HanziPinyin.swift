@@ -1,5 +1,5 @@
 //
-//  HanziPinyin.swift
+//  String+HanziPinyin.swift
 //  HanziPinyin
 //
 //  Created by Xin Hong on 16/4/16.
@@ -8,6 +8,8 @@
 
 import Foundation
 
-public struct HanziPinyin {
-    
+public extension String {
+    public func toPinyin() {
+        
+    }
 }

@@ -7,10 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D316702A1CC362440065A14D /* String+HanziPinyin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31670291CC362440065A14D /* String+HanziPinyin.swift */; };
+		D316702C1CC394FD0065A14D /* PinyinOutputFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D316702B1CC394FD0065A14D /* PinyinOutputFormat.swift */; };
+		D31670311CC3B2BC0065A14D /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = D31670301CC3B2BC0065A14D /* unicode_to_hanyu_pinyin.txt */; };
+		D31670331CC3CD760065A14D /* HanziPinyinResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31670321CC3CD760065A14D /* HanziPinyinResource.swift */; };
+		D31670351CC3DD1C0065A14D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31670341CC3DD1C0065A14D /* Constants.swift */; };
+		D31670371CC3E5290065A14D /* Character+CodePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31670361CC3E5290065A14D /* Character+CodePoint.swift */; };
 		D395A1311CC245C500B76FB7 /* HanziPinyin.swift in Sources */ = {isa = PBXBuildFile; fileRef = D395A1301CC245C500B76FB7 /* HanziPinyin.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D31670291CC362440065A14D /* String+HanziPinyin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+HanziPinyin.swift"; sourceTree = "<group>"; };
+		D316702B1CC394FD0065A14D /* PinyinOutputFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinyinOutputFormat.swift; sourceTree = "<group>"; };
+		D31670301CC3B2BC0065A14D /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
+		D31670321CC3CD760065A14D /* HanziPinyinResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HanziPinyinResource.swift; sourceTree = "<group>"; };
+		D31670341CC3DD1C0065A14D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D31670361CC3E5290065A14D /* Character+CodePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character+CodePoint.swift"; sourceTree = "<group>"; };
 		D395A1251CC244BB00B76FB7 /* HanziPinyin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HanziPinyin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D395A1301CC245C500B76FB7 /* HanziPinyin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HanziPinyin.swift; sourceTree = "<group>"; };
 		D395A1331CC2460200B76FB7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -27,10 +39,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D316702F1CC3B28E0065A14D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D31670301CC3B2BC0065A14D /* unicode_to_hanyu_pinyin.txt */,
+			);
+			name = Resources;
+			path = HanziPinyin/Resources;
+			sourceTree = "<group>";
+		};
 		D395A11B1CC244BB00B76FB7 = {
 			isa = PBXGroup;
 			children = (
 				D395A1271CC244BB00B76FB7 /* HanziPinyin */,
+				D316702F1CC3B28E0065A14D /* Resources */,
 				D395A1321CC245EA00B76FB7 /* Supporting Files */,
 				D395A1261CC244BB00B76FB7 /* Products */,
 			);
@@ -47,7 +69,12 @@
 		D395A1271CC244BB00B76FB7 /* HanziPinyin */ = {
 			isa = PBXGroup;
 			children = (
+				D31670341CC3DD1C0065A14D /* Constants.swift */,
 				D395A1301CC245C500B76FB7 /* HanziPinyin.swift */,
+				D31670321CC3CD760065A14D /* HanziPinyinResource.swift */,
+				D316702B1CC394FD0065A14D /* PinyinOutputFormat.swift */,
+				D31670361CC3E5290065A14D /* Character+CodePoint.swift */,
+				D31670291CC362440065A14D /* String+HanziPinyin.swift */,
 			);
 			path = HanziPinyin;
 			sourceTree = "<group>";
@@ -128,6 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31670311CC3B2BC0065A14D /* unicode_to_hanyu_pinyin.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,7 +166,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D31670351CC3DD1C0065A14D /* Constants.swift in Sources */,
+				D316702A1CC362440065A14D /* String+HanziPinyin.swift in Sources */,
+				D31670331CC3CD760065A14D /* HanziPinyinResource.swift in Sources */,
+				D31670371CC3E5290065A14D /* Character+CodePoint.swift in Sources */,
 				D395A1311CC245C500B76FB7 /* HanziPinyin.swift in Sources */,
+				D316702C1CC394FD0065A14D /* PinyinOutputFormat.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
