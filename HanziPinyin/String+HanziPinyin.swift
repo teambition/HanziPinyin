@@ -9,7 +9,28 @@
 import Foundation
 
 public extension String {
-    public func toPinyin() {
-        
+    public func toPinyin(withFormat outputFormat: PinyinOutputFormat = PinyinOutputFormat.defaultFormat, separator: String = " ") -> String {
+        var pinyinStrings = [String]()
+        for unicodeScalar in unicodeScalars {
+            let charCodePoint = unicodeScalar.value
+            let pinyinArray = HanziPinyin.pinyinArrayWithCharCodePoint(charCodePoint, outputFormat: outputFormat)
+
+            if pinyinArray.count > 0 {
+                pinyinStrings.append(pinyinArray.first!)
+            } else {
+                pinyinStrings.append(String(unicodeScalar))
+            }
+        }
+
+        let pinyin = pinyinStrings.joinWithSeparator(separator)
+        return pinyin
+    }
+
+    public func toPinyinAcronym() -> String {
+        return ""
+    }
+
+    public func hasChineseCharacters() -> Bool {
+        return true
     }
 }

@@ -12,6 +12,7 @@ import HanziPinyin
 class HanziPinyinExampleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("我爱中文".toPinyin())
+        print("I love Chinese.".toPinyin())
     }
 }
-

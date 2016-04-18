@@ -8,6 +8,10 @@
 
 import Foundation
 
+private struct CacheKeys {
+    static let unicodeToPinyin = "HanziPinyin.UnicodeToPinyin"
+}
+
 internal extension HanziPinyin {
     internal static var unicodeToPinyinTable: [String: String] {
         if let cachedPinyinTable = cachedObjectForKey(CacheKeys.unicodeToPinyin) as? [String: String] {
@@ -37,22 +41,6 @@ internal extension HanziPinyin {
                 return [:]
             }
         }
-    }
-
-    internal static func pinyinForCharCodePoint(charCodePoint: UInt32) -> [String] {
-        func isValidPinyin(pinyin: String) -> Bool {
-            return pinyin != "(none0)" && pinyin.hasPrefix("(") && pinyin.hasSuffix(")")
-        }
-
-        let codePointHex = String(format: "%x", charCodePoint).uppercaseString
-        guard let pinyin = unicodeToPinyinTable[codePointHex] where isValidPinyin(pinyin) else {
-            return []
-        }
-
-        let leftBracketRange = pinyin.rangeOfString("(")!
-        let rightBracketRange = pinyin.rangeOfString(")")!
-        let processedPinyin = pinyin.substringWithRange(Range(start: leftBracketRange.endIndex, end: rightBracketRange.startIndex))
-        return processedPinyin.componentsSeparatedByString(",")
     }
 }
 

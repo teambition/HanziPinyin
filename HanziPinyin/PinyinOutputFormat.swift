@@ -10,8 +10,13 @@ import Foundation
 
 public enum PinyinToneType {
     case None
-    case ToneMark
     case ToneNumber
+}
+
+public enum PinyinVCharType {
+    case VCharacter
+    case UUnicode
+    case UAndColon
 }
 
 public enum PinyinCaseType {
@@ -19,18 +24,12 @@ public enum PinyinCaseType {
     case Uppercase
 }
 
-public enum PinyinVCharType {
-    case UAndColon
-    case VChar
-    case UUnicode
-}
-
 public struct PinyinOutputFormat {
     public var toneType: PinyinToneType
-    public var caseType: PinyinCaseType
     public var vCharType: PinyinVCharType
+    public var caseType: PinyinCaseType
 
-    public var defaultFormat: PinyinOutputFormat {
-        return PinyinOutputFormat(toneType: .None, caseType: .Lowercase, vCharType: .VChar)
+    public static var defaultFormat: PinyinOutputFormat {
+        return PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
     }
 }
