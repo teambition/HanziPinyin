@@ -46,11 +46,11 @@ internal extension HanziPinyin {
 
 internal extension HanziPinyin {
     private static var pinYinCachePath: String? {
-        guard let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first as? NSString else {
+        guard let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first else {
             return nil
         }
-        
-        let pinYinCachePath = documentsPath.stringByAppendingPathComponent("PinYinCache")
+
+        let pinYinCachePath = NSString(string: documentsPath).stringByAppendingPathComponent("PinYinCache")
         if !NSFileManager.defaultManager().fileExistsAtPath(pinYinCachePath) {
             do {
                 try NSFileManager.defaultManager().createDirectoryAtPath(pinYinCachePath, withIntermediateDirectories: true, attributes: nil)
@@ -63,10 +63,10 @@ internal extension HanziPinyin {
     }
 
     private static func pinYinCachePathForKey(key: String) -> String? {
-        guard let pinYinCachePath = pinYinCachePath as? NSString else {
+        guard let pinYinCachePath = pinYinCachePath else {
             return nil
         }
-        return pinYinCachePath.stringByAppendingPathComponent(key)
+        return NSString(string: pinYinCachePath).stringByAppendingPathComponent(key)
     }
 
     private static func cacheObject(object: NSCoding, forKey key: String) {
@@ -90,8 +90,7 @@ internal extension HanziPinyin {
         do {
             let data = try NSData(contentsOfFile: cachePath, options: [])
             return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSCoding
-        } catch let error {
-            print("get cached object error: \(error)")
+        } catch _ {
             return nil
         }
     }

@@ -14,7 +14,7 @@ internal struct PinyinFormatter {
 
         switch format.toneType {
         case .None:
-            formattedPinyin = formattedPinyin.stringByReplacingOccurrencesOfString("[1-5]", withString: "", options: .RegularExpressionSearch, range: Range(start: formattedPinyin.startIndex, end: formattedPinyin.endIndex))
+            formattedPinyin = formattedPinyin.stringByReplacingOccurrencesOfString("[1-5]", withString: "", options: .RegularExpressionSearch, range: formattedPinyin.startIndex..<formattedPinyin.endIndex)
         case .ToneNumber:
             break
         }
@@ -38,4 +38,3 @@ internal struct PinyinFormatter {
         return formattedPinyin
     }
 }
-

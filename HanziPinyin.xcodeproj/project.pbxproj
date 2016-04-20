@@ -70,8 +70,8 @@
 				D316702B1CC394FD0065A14D /* PinyinOutputFormat.swift */,
 				D31670291CC362440065A14D /* String+HanziPinyin.swift */,
 				D395A1301CC245C500B76FB7 /* HanziPinyin.swift */,
-				D31670321CC3CD760065A14D /* HanziPinyinResource.swift */,
 				D3B1E9871CC5232F00836FEF /* PinyinFormatter.swift */,
+				D31670321CC3CD760065A14D /* HanziPinyinResource.swift */,
 			);
 			path = HanziPinyin;
 			sourceTree = "<group>";
