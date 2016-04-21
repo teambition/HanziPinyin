@@ -38,7 +38,6 @@
 		D395A10E1CC243DB00B76FB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D395A1101CC243DB00B76FB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D395A1151CC243DB00B76FB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D3A293BF1CC7C0EC005843BA /* HanziPinyinExample.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = HanziPinyinExample.playground; path = HanziPinyinExample/HanziPinyinExample.playground; sourceTree = "<group>"; };
 		D3A293C01CC7DBD2005843BA /* ActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,7 +58,6 @@
 			children = (
 				D313641E1CC86C7700CF6E19 /* HanziPinyin.framework */,
 				D395A1081CC243DB00B76FB7 /* HanziPinyinExample */,
-				D3A293BE1CC7C0AE005843BA /* Playground */,
 				D395A1071CC243DB00B76FB7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,14 +81,6 @@
 				D395A1151CC243DB00B76FB7 /* Info.plist */,
 			);
 			path = HanziPinyinExample;
-			sourceTree = "<group>";
-		};
-		D3A293BE1CC7C0AE005843BA /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				D3A293BF1CC7C0EC005843BA /* HanziPinyinExample.playground */,
-			);
-			name = Playground;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
