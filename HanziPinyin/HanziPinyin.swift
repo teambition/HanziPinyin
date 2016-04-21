@@ -14,13 +14,20 @@ internal struct HanziCodePoint {
 }
 
 internal struct HanziPinyin {
+    internal static let sharedInstance = HanziPinyin()
+    internal private(set) var unicodeToPinyinTable: [String: String] = [:]
+
+    init() {
+        unicodeToPinyinTable = initializeResource()
+    }
+
     internal static func pinyinArrayWithCharCodePoint(charCodePoint: UInt32, outputFormat: PinyinOutputFormat = PinyinOutputFormat.defaultFormat) -> [String] {
         func isValidPinyin(pinyin: String) -> Bool {
             return pinyin != "(none0)" && pinyin.hasPrefix("(") && pinyin.hasSuffix(")")
         }
 
         let codePointHex = String(format: "%x", charCodePoint).uppercaseString
-        guard let pinyin = unicodeToPinyinTable[codePointHex] where isValidPinyin(pinyin) else {
+        guard let pinyin = HanziPinyin.sharedInstance.unicodeToPinyinTable[codePointHex] where isValidPinyin(pinyin) else {
             return []
         }
 

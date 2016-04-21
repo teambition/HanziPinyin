@@ -13,8 +13,8 @@ private struct CacheKeys {
 }
 
 internal extension HanziPinyin {
-    internal static var unicodeToPinyinTable: [String: String] {
-        if let cachedPinyinTable = cachedObjectForKey(CacheKeys.unicodeToPinyin) as? [String: String] {
+    internal func initializeResource() -> [String: String] {
+        if let cachedPinyinTable = HanziPinyin.cachedObjectForKey(CacheKeys.unicodeToPinyin) as? [String: String] {
             return cachedPinyinTable
         } else {
             let resourceBundle = NSBundle(identifier: "Teambition.HanziPinyin") ?? NSBundle.mainBundle()
@@ -35,7 +35,7 @@ internal extension HanziPinyin {
                     pinyinTable.updateValue(components[1], forKey: components[0])
                 }
 
-                cacheObject(pinyinTable, forKey: CacheKeys.unicodeToPinyin)
+                HanziPinyin.cacheObject(pinyinTable, forKey: CacheKeys.unicodeToPinyin)
                 return pinyinTable
             } catch _ {
                 return [:]
