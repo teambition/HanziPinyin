@@ -15,34 +15,34 @@ internal struct HanziCodePoint {
 
 internal struct HanziPinyin {
     internal static let sharedInstance = HanziPinyin()
-    internal private(set) var unicodeToPinyinTable: [String: String] = [:]
+    internal fileprivate(set) var unicodeToPinyinTable = [String: String]()
 
     init() {
         unicodeToPinyinTable = initializeResource()
     }
 
-    internal static func pinyinArrayWithCharCodePoint(charCodePoint: UInt32, outputFormat: PinyinOutputFormat = PinyinOutputFormat.defaultFormat) -> [String] {
-        func isValidPinyin(pinyin: String) -> Bool {
+    internal static func pinyinArray(withCharCodePoint charCodePoint: UInt32, outputFormat: PinyinOutputFormat = .default) -> [String] {
+        func isValidPinyin(_ pinyin: String) -> Bool {
             return pinyin != "(none0)" && pinyin.hasPrefix("(") && pinyin.hasSuffix(")")
         }
 
-        let codePointHex = String(format: "%x", charCodePoint).uppercaseString
-        guard let pinyin = HanziPinyin.sharedInstance.unicodeToPinyinTable[codePointHex] where isValidPinyin(pinyin) else {
+        let codePointHex = String(format: "%x", charCodePoint).uppercased()
+        guard let pinyin = HanziPinyin.sharedInstance.unicodeToPinyinTable[codePointHex], isValidPinyin(pinyin) else {
             return []
         }
 
-        let leftBracketRange = pinyin.rangeOfString("(")!
-        let rightBracketRange = pinyin.rangeOfString(")")!
-        let processedPinyin = pinyin.substringWithRange(leftBracketRange.endIndex..<rightBracketRange.startIndex)
-        let pinyinArray = processedPinyin.componentsSeparatedByString(",")
+        let leftBracketRange = pinyin.range(of: "(")!
+        let rightBracketRange = pinyin.range(of: ")")!
+        let processedPinyin = pinyin.substring(with: leftBracketRange.upperBound..<rightBracketRange.lowerBound)
+        let pinyinArray = processedPinyin.components(separatedBy: ",")
 
         let formattedPinyinArray = pinyinArray.map { (pinyin) -> String in
-            return PinyinFormatter.formatPinyin(pinyin, withOutputFormat: outputFormat)
+            return PinyinFormatter.format(pinyin, withOutputFormat: outputFormat)
         }
         return formattedPinyinArray
     }
 
-    internal static func isHanzi(charCodePoint: UInt32) -> Bool {
+    internal static func isHanzi(ofCharCodePoint charCodePoint: UInt32) -> Bool {
         return charCodePoint >= HanziCodePoint.start && charCodePoint <= HanziCodePoint.end
     }
 }

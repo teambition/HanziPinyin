@@ -13,10 +13,10 @@ github "teambition/HanziPinyin"
 ###Usage
 ##### Pinyin output format
 ```swift
-// PinyinToneType: None, ToneNumber
-// PinyinVCharType: VCharacter, UUnicode, UAndColon
-// PinyinCaseType: Lowercase, Uppercase
-let outputFormat = PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
+// PinyinToneType: none, toneNumber
+// PinyinVCharType: vCharacter, uUnicode, uAndColon
+// PinyinCaseType: lowercase, uppercase
+let outputFormat = PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercase)
 ```
 #####  Convert to Pinyin synchronously
 ```swift
@@ -46,9 +46,9 @@ print("I love Chinese.".toPinyin())
 
 #####  Chinese character detecting
 ```swift
-print("我爱中文".hasChineseCharacter())
+print("我爱中文".hasChineseCharacter)
 // true
-print("I love Chinese.".hasChineseCharacter())
+print("I love Chinese.".hasChineseCharacter)
 // false
 ```
 

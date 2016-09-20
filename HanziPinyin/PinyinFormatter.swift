@@ -9,30 +9,30 @@
 import Foundation
 
 internal struct PinyinFormatter {
-    internal static func formatPinyin(pinyin: String, withOutputFormat format: PinyinOutputFormat) -> String {
+    internal static func format(_ pinyin: String, withOutputFormat format: PinyinOutputFormat) -> String {
         var formattedPinyin = pinyin
 
         switch format.toneType {
-        case .None:
-            formattedPinyin = formattedPinyin.stringByReplacingOccurrencesOfString("[1-5]", withString: "", options: .RegularExpressionSearch, range: formattedPinyin.startIndex..<formattedPinyin.endIndex)
-        case .ToneNumber:
+        case .none:
+            formattedPinyin = formattedPinyin.replacingOccurrences(of: "[1-5]", with: "", options: .regularExpression, range: formattedPinyin.startIndex..<formattedPinyin.endIndex)
+        case .toneNumber:
             break
         }
 
         switch format.vCharType {
-        case .VCharacter:
-            formattedPinyin = formattedPinyin.stringByReplacingOccurrencesOfString("u:", withString: "v")
-        case .UUnicode:
-            formattedPinyin = formattedPinyin.stringByReplacingOccurrencesOfString("u:", withString: "ü")
-        case .UAndColon:
+        case .vCharacter:
+            formattedPinyin = formattedPinyin.replacingOccurrences(of: "u:", with: "v")
+        case .uUnicode:
+            formattedPinyin = formattedPinyin.replacingOccurrences(of: "u:", with: "ü")
+        case .uAndColon:
             break
         }
 
         switch format.caseType {
-        case .Lowercase:
-            formattedPinyin = formattedPinyin.lowercaseString
-        case .Uppercase:
-            formattedPinyin = formattedPinyin.uppercaseString
+        case .lowercase:
+            formattedPinyin = formattedPinyin.lowercased()
+        case .uppercase:
+            formattedPinyin = formattedPinyin.uppercased()
         }
 
         return formattedPinyin

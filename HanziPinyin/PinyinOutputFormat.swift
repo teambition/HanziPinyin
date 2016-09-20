@@ -9,19 +9,19 @@
 import Foundation
 
 public enum PinyinToneType {
-    case None
-    case ToneNumber
+    case none
+    case toneNumber
 }
 
 public enum PinyinVCharType {
-    case VCharacter
-    case UUnicode
-    case UAndColon
+    case vCharacter
+    case uUnicode
+    case uAndColon
 }
 
 public enum PinyinCaseType {
-    case Lowercase
-    case Uppercase
+    case lowercase
+    case uppercase
 }
 
 public struct PinyinOutputFormat {
@@ -29,7 +29,7 @@ public struct PinyinOutputFormat {
     public var vCharType: PinyinVCharType
     public var caseType: PinyinCaseType
 
-    public static var defaultFormat: PinyinOutputFormat {
-        return PinyinOutputFormat(toneType: .None, vCharType: .VCharacter, caseType: .Lowercase)
+    public static var `default`: PinyinOutputFormat {
+        return PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercase)
     }
 }

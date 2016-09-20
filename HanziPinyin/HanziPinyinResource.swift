@@ -14,28 +14,28 @@ private struct CacheKeys {
 
 internal extension HanziPinyin {
     internal func initializeResource() -> [String: String] {
-        if let cachedPinyinTable = HanziPinyin.cachedObjectForKey(CacheKeys.unicodeToPinyin) as? [String: String] {
+        if let cachedPinyinTable = HanziPinyin.cachedObject(forKey: CacheKeys.unicodeToPinyin) as? [String: String] {
             return cachedPinyinTable
         } else {
-            let resourceBundle = NSBundle(identifier: "Teambition.HanziPinyin") ?? NSBundle.mainBundle()
-            guard let resourcePath = resourceBundle.pathForResource("unicode_to_hanyu_pinyin", ofType: "txt") else {
+            let resourceBundle = Bundle(identifier: "Teambition.HanziPinyin") ?? Bundle.main
+            guard let resourcePath = resourceBundle.path(forResource: "unicode_to_hanyu_pinyin", ofType: "txt") else {
                 return [:]
             }
 
             do {
-                let unicodeToPinyinText = try NSString(contentsOfFile: resourcePath, encoding: NSUTF8StringEncoding) as String
-                let textComponents = unicodeToPinyinText.componentsSeparatedByString("\r\n")
+                let unicodeToPinyinText = try String(contentsOf: URL(fileURLWithPath: resourcePath))
+                let textComponents = unicodeToPinyinText.components(separatedBy: "\r\n")
 
                 var pinyinTable = [String: String]()
                 for pinyin in textComponents {
-                    let components = pinyin.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                    let components = pinyin.components(separatedBy: .whitespaces)
                     guard components.count > 1 else {
                         continue
                     }
                     pinyinTable.updateValue(components[1], forKey: components[0])
                 }
 
-                HanziPinyin.cacheObject(pinyinTable, forKey: CacheKeys.unicodeToPinyin)
+                HanziPinyin.cache(pinyinTable, forKey: CacheKeys.unicodeToPinyin)
                 return pinyinTable
             } catch _ {
                 return [:]
@@ -45,15 +45,15 @@ internal extension HanziPinyin {
 }
 
 internal extension HanziPinyin {
-    private static var pinYinCachePath: String? {
-        guard let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first else {
+    fileprivate static var pinYinCachePath: String? {
+        guard let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first else {
             return nil
         }
 
-        let pinYinCachePath = NSString(string: documentsPath).stringByAppendingPathComponent("PinYinCache")
-        if !NSFileManager.defaultManager().fileExistsAtPath(pinYinCachePath) {
+        let pinYinCachePath = NSString(string: documentsPath).appendingPathComponent("PinYinCache")
+        if !FileManager.default.fileExists(atPath: pinYinCachePath) {
             do {
-                try NSFileManager.defaultManager().createDirectoryAtPath(pinYinCachePath, withIntermediateDirectories: true, attributes: nil)
+                try FileManager.default.createDirectory(atPath: pinYinCachePath, withIntermediateDirectories: true, attributes: nil)
             } catch {
                 print("create pinYin cache path error: \(error)")
                 return nil
@@ -62,34 +62,34 @@ internal extension HanziPinyin {
         return pinYinCachePath
     }
 
-    private static func pinYinCachePathForKey(key: String) -> String? {
+    fileprivate static func pinYinCachePath(forKey key: String) -> String? {
         guard let pinYinCachePath = pinYinCachePath else {
             return nil
         }
-        return NSString(string: pinYinCachePath).stringByAppendingPathComponent(key)
+        return NSString(string: pinYinCachePath).appendingPathComponent(key)
     }
 
-    private static func cacheObject(object: NSCoding, forKey key: String) {
-        let archivedData = NSKeyedArchiver.archivedDataWithRootObject(object)
-        guard let cachePath = pinYinCachePathForKey(key) else {
+    fileprivate static func cache(_ object: Any, forKey key: String) {
+        let archivedData = NSKeyedArchiver.archivedData(withRootObject: object)
+        guard let cachePath = pinYinCachePath(forKey: key) else {
             return
         }
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+        DispatchQueue.global(qos: .default).async { 
             do {
-                try archivedData.writeToFile(cachePath, options: .AtomicWrite)
+                try archivedData.write(to: URL(fileURLWithPath: cachePath), options: .atomicWrite)
             } catch let error {
                 print("cache object error: \(error)")
             }
         }
     }
 
-    private static func cachedObjectForKey(key: String) -> NSCoding? {
-        guard let cachePath = pinYinCachePathForKey(key) else {
+    fileprivate static func cachedObject(forKey key: String) -> Any? {
+        guard let cachePath = pinYinCachePath(forKey: key) else {
             return nil
         }
         do {
-            let data = try NSData(contentsOfFile: cachePath, options: [])
-            return NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSCoding
+            let data = try Data(contentsOf: URL(fileURLWithPath: cachePath), options: [])
+            return NSKeyedUnarchiver.unarchiveObject(with: data)
         } catch _ {
             return nil
         }

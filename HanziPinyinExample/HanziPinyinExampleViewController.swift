@@ -21,28 +21,28 @@ class HanziPinyinExampleViewController: UIViewController {
     }
 
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Helper
-    private func setupUI() {
+    fileprivate func setupUI() {
         navigationItem.title = "HanziPinyin"
-        inputTextField.returnKeyType = .Done
+        inputTextField.returnKeyType = .done
         inputTextField.placeholder = "Chinese characters..."
         outputTextView.text = nil
         inputTextField.delegate = self
-        pinyinButton.enabled = false
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(inputTextFieldTextChanged(_:)), name: UITextFieldTextDidChangeNotification, object: inputTextField)
+        pinyinButton.isEnabled = false
+        NotificationCenter.default.addObserver(self, selector: #selector(inputTextFieldTextChanged(_:)), name: .UITextFieldTextDidChange, object: inputTextField)
     }
 
     // MARK: - Actions
-    @IBAction func pinyinButtonTapped(sender: UIButton) {
+    @IBAction func pinyinButtonTapped(_ sender: UIButton) {
         guard let text = inputTextField.text else {
             return
         }
 
         inputTextField.resignFirstResponder()
-        let startTime = NSDate().timeIntervalSince1970
+        let startTime = Date().timeIntervalSince1970
         pinyinButton.startAnimating()
         text.toPinyin { (pinyin) in
             self.pinyinButton.stopAnimating()
@@ -52,17 +52,17 @@ class HanziPinyinExampleViewController: UIViewController {
         }
     }
 
-    @IBAction func backgroundTapped(sender: UIControl) {
-        UIApplication.sharedApplication().sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, forEvent: nil)
+    @IBAction func backgroundTapped(_ sender: UIControl) {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
-    func inputTextFieldTextChanged(notification: NSNotification) {
-        pinyinButton.enabled = inputTextField.text?.characters.count > 0
+    func inputTextFieldTextChanged(_ notification: Notification) {
+        pinyinButton.isEnabled = (inputTextField.text?.characters.count ?? 0) > 0
     }
 }
 
 extension HanziPinyinExampleViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         inputTextField.resignFirstResponder()
         return true
     }
