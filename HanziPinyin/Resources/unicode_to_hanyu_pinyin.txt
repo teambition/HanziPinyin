@@ -1765,7 +1765,7 @@
 54E3 (pou3)
 54E4 (mang2)
 54E5 (ge1)
-54E6 (e2,o2,o4,wo2,wo4)
+54E6 (o2,o4,e2,wo2,wo4)
 54E7 (chi1)
 54E8 (shao4)
 54E9 (li1,li3,li5)
