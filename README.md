@@ -1,24 +1,24 @@
-#HanziPinyin
+# HanziPinyin
 A lightweight Swift library supporting convertion between Chinese(both Simplified and Tranditional) characters and Pinyin.
 
 ![Example](Gif/HanziPinyinExample.gif "HanziPinyinExample")
 
-##How To Get Started
-###Carthage
+## How To Get Started
+### Carthage
 Specify "HanziPinyin" in your ```Cartfile```:
 ```ogdl 
 github "teambition/HanziPinyin"
 ```
 
-###Usage
-##### Pinyin output format
+### Usage
+#### Pinyin output format
 ```swift
 // PinyinToneType: none, toneNumber
 // PinyinVCharType: vCharacter, uUnicode, uAndColon
 // PinyinCaseType: lowercase, uppercase
 let outputFormat = PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercase)
 ```
-#####  Convert to Pinyin synchronously
+####  Convert to Pinyin synchronously
 ```swift
 print("我爱中文".toPinyin(withFormat: outputFormat, separator: " "))
 // wo ai zhong wen
@@ -33,7 +33,7 @@ print("I love Chinese.".toPinyin())
 // I love Chinese.
 ```
 
-#####  Convert to Pinyin asynchronously
+####  Convert to Pinyin asynchronously
 ```swift
 "我爱中文".toPinyin { (pinyin) in
     // do something
@@ -44,7 +44,7 @@ print("I love Chinese.".toPinyin())
 }
 ```
 
-#####  Chinese character detecting
+####  Chinese character detecting
 ```swift
 print("我爱中文".hasChineseCharacter)
 // true
