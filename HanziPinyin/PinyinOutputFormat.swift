@@ -22,6 +22,7 @@ public enum PinyinVCharType {
 public enum PinyinCaseType {
     case lowercase
     case uppercase
+    case capitalized
 }
 
 public struct PinyinOutputFormat {

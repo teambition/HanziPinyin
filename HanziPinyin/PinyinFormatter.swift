@@ -33,6 +33,8 @@ internal struct PinyinFormatter {
             formattedPinyin = formattedPinyin.lowercased()
         case .uppercase:
             formattedPinyin = formattedPinyin.uppercased()
+        case .capitalized:
+            formattedPinyin = formattedPinyin.capitalized
         }
 
         return formattedPinyin
