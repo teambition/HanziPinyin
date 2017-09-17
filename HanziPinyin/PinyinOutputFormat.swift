@@ -32,4 +32,10 @@ public struct PinyinOutputFormat {
     public static var `default`: PinyinOutputFormat {
         return PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercase)
     }
+    
+    public init(toneType: PinyinToneType, vCharType: PinyinVCharType, caseType: PinyinCaseType) {
+        self.toneType = toneType
+        self.vCharType = vCharType
+        self.caseType = caseType
+    }
 }
