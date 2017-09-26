@@ -29,9 +29,9 @@ internal struct PinyinFormatter {
         }
 
         switch format.caseType {
-        case .lowercase:
+        case .lowercased:
             formattedPinyin = formattedPinyin.lowercased()
-        case .uppercase:
+        case .uppercased:
             formattedPinyin = formattedPinyin.uppercased()
         case .capitalized:
             formattedPinyin = formattedPinyin.capitalized

@@ -15,8 +15,8 @@ github "teambition/HanziPinyin"
 ```swift
 // PinyinToneType: none, toneNumber
 // PinyinVCharType: vCharacter, uUnicode, uAndColon
-// PinyinCaseType: lowercase, uppercase
-let outputFormat = PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercase)
+// PinyinCaseType: lowercased, uppercased, capitalized
+let outputFormat = PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercased)
 ```
 ####  Convert to Pinyin synchronously
 ```swift

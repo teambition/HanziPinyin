@@ -20,8 +20,8 @@ public enum PinyinVCharType {
 }
 
 public enum PinyinCaseType {
-    case lowercase
-    case uppercase
+    case lowercased
+    case uppercased
     case capitalized
 }
 
@@ -31,7 +31,7 @@ public struct PinyinOutputFormat {
     public var caseType: PinyinCaseType
 
     public static var `default`: PinyinOutputFormat {
-        return PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercase)
+        return PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .lowercased)
     }
 
     public init(toneType: PinyinToneType, vCharType: PinyinVCharType, caseType: PinyinCaseType) {
