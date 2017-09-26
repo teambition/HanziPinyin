@@ -44,7 +44,8 @@ class HanziPinyinExampleViewController: UIViewController {
         inputTextField.resignFirstResponder()
         let startTime = Date().timeIntervalSince1970
         pinyinButton.startAnimating()
-        text.toPinyin { (pinyin) in
+        let outputFormat = PinyinOutputFormat(toneType: .none, vCharType: .vCharacter, caseType: .capitalized)
+        text.toPinyin(withFormat: outputFormat) { (pinyin) in
             self.pinyinButton.stopAnimating()
             let endTime = NSDate().timeIntervalSince1970
             let totalTime = endTime - startTime
@@ -56,7 +57,7 @@ class HanziPinyinExampleViewController: UIViewController {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 
-    func inputTextFieldTextChanged(_ notification: Notification) {
+    @objc func inputTextFieldTextChanged(_ notification: Notification) {
         pinyinButton.isEnabled = (inputTextField.text?.characters.count ?? 0) > 0
     }
 }

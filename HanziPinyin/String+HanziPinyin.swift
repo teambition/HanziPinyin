@@ -23,7 +23,7 @@ public extension String {
         }
 
         var pinyin = pinyinStrings.joined(separator: "")
-        if !pinyin.isEmpty && pinyin.substring(from: pinyin.characters.index(pinyin.endIndex, offsetBy: -1)) == separator {
+        if !pinyin.isEmpty && String(pinyin.suffix(from: pinyin.characters.index(pinyin.endIndex, offsetBy: -1))) == separator {
             pinyin.remove(at: pinyin.characters.index(pinyin.endIndex, offsetBy: -1))
         }
 
@@ -54,7 +54,7 @@ public extension String {
         }
 
         var pinyinAcronym = pinyinStrings.joined(separator: "")
-        if !pinyinAcronym.isEmpty && pinyinAcronym.substring(from: pinyinAcronym.characters.index(pinyinAcronym.endIndex, offsetBy: -1)) == separator {
+        if !pinyinAcronym.isEmpty && String(pinyinAcronym.suffix(from: pinyinAcronym.characters.index(pinyinAcronym.endIndex, offsetBy: -1))) == separator {
             pinyinAcronym.remove(at: pinyinAcronym.characters.index(pinyinAcronym.endIndex, offsetBy: -1))
         }
 

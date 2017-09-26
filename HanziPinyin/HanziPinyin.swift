@@ -33,7 +33,7 @@ internal struct HanziPinyin {
 
         let leftBracketRange = pinyin.range(of: "(")!
         let rightBracketRange = pinyin.range(of: ")")!
-        let processedPinyin = pinyin.substring(with: leftBracketRange.upperBound..<rightBracketRange.lowerBound)
+        let processedPinyin = String(pinyin[leftBracketRange.upperBound..<rightBracketRange.lowerBound])
         let pinyinArray = processedPinyin.components(separatedBy: ",")
 
         let formattedPinyinArray = pinyinArray.map { (pinyin) -> String in
