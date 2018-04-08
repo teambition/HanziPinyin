@@ -23,8 +23,8 @@ public extension String {
         }
 
         var pinyin = pinyinStrings.joined(separator: "")
-        if !pinyin.isEmpty && String(pinyin.suffix(from: pinyin.characters.index(pinyin.endIndex, offsetBy: -1))) == separator {
-            pinyin.remove(at: pinyin.characters.index(pinyin.endIndex, offsetBy: -1))
+        if !pinyin.isEmpty && String(pinyin.suffix(from: pinyin.index(pinyin.endIndex, offsetBy: -1))) == separator {
+            pinyin.remove(at: pinyin.index(pinyin.endIndex, offsetBy: -1))
         }
 
         return pinyin
@@ -46,7 +46,7 @@ public extension String {
             let pinyinArray = HanziPinyin.pinyinArray(withCharCodePoint: charCodePoint, outputFormat: outputFormat)
 
             if pinyinArray.count > 0 {
-                let acronym = pinyinArray.first!.characters.first!
+                let acronym = pinyinArray.first!.first!
                 pinyinStrings.append(String(acronym) + separator)
             } else {
                 pinyinStrings.append(String(unicodeScalar))
@@ -54,8 +54,8 @@ public extension String {
         }
 
         var pinyinAcronym = pinyinStrings.joined(separator: "")
-        if !pinyinAcronym.isEmpty && String(pinyinAcronym.suffix(from: pinyinAcronym.characters.index(pinyinAcronym.endIndex, offsetBy: -1))) == separator {
-            pinyinAcronym.remove(at: pinyinAcronym.characters.index(pinyinAcronym.endIndex, offsetBy: -1))
+        if !pinyinAcronym.isEmpty && String(pinyinAcronym.suffix(from: pinyinAcronym.index(pinyinAcronym.endIndex, offsetBy: -1))) == separator {
+            pinyinAcronym.remove(at: pinyinAcronym.index(pinyinAcronym.endIndex, offsetBy: -1))
         }
 
         return pinyinAcronym

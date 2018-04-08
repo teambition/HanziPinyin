@@ -58,7 +58,7 @@ class HanziPinyinExampleViewController: UIViewController {
     }
 
     @objc func inputTextFieldTextChanged(_ notification: Notification) {
-        pinyinButton.isEnabled = (inputTextField.text?.characters.count ?? 0) > 0
+        pinyinButton.isEnabled = (inputTextField.text?.count ?? 0) > 0
     }
 }
 
