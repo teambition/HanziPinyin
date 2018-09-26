@@ -32,7 +32,7 @@ class HanziPinyinExampleViewController: UIViewController {
         outputTextView.text = nil
         inputTextField.delegate = self
         pinyinButton.isEnabled = false
-        NotificationCenter.default.addObserver(self, selector: #selector(inputTextFieldTextChanged(_:)), name: .UITextFieldTextDidChange, object: inputTextField)
+        NotificationCenter.default.addObserver(self, selector: #selector(inputTextFieldTextChanged(_:)), name: UITextField.textDidChangeNotification, object: inputTextField)
     }
 
     // MARK: - Actions

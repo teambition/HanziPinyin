@@ -290,7 +290,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Teambition.HanziPinyinExample;
 				PRODUCT_NAME = HanziPinyinExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -303,7 +303,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Teambition.HanziPinyinExample;
 				PRODUCT_NAME = HanziPinyinExample;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

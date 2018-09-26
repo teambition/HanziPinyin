@@ -10,7 +10,7 @@ import UIKit
 
 class ActivityButton: UIButton {
     fileprivate lazy var activityIndicator: UIActivityIndicatorView = { [unowned self] in
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        let activityIndicator = UIActivityIndicatorView(style: .white)
         return activityIndicator
     }()
     fileprivate var title: String?
