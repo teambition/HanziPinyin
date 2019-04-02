@@ -9,7 +9,7 @@
 import Foundation
 
 public extension String {
-    public func toPinyin(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = " ") -> String {
+    func toPinyin(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = " ") -> String {
         var pinyinStrings = [String]()
         for unicodeScalar in unicodeScalars {
             let charCodePoint = unicodeScalar.value
@@ -30,7 +30,7 @@ public extension String {
         return pinyin
     }
 
-    public func toPinyin(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = " ", completion: @escaping ((_ pinyin: String) -> ())) {
+    func toPinyin(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = " ", completion: @escaping ((_ pinyin: String) -> ())) {
         DispatchQueue.global(qos: .default).async {
             let pinyin = self.toPinyin(withFormat: outputFormat, separator: separator)
             DispatchQueue.main.async {
@@ -39,7 +39,7 @@ public extension String {
         }
     }
 
-    public func toPinyinAcronym(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = "") -> String {
+    func toPinyinAcronym(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = "") -> String {
         var pinyinStrings = [String]()
         for unicodeScalar in unicodeScalars {
             let charCodePoint = unicodeScalar.value
@@ -61,7 +61,7 @@ public extension String {
         return pinyinAcronym
     }
 
-    public func toPinyinAcronym(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = "", completion: @escaping ((_ pinyinAcronym: String) -> ())) {
+    func toPinyinAcronym(withFormat outputFormat: PinyinOutputFormat = .default, separator: String = "", completion: @escaping ((_ pinyinAcronym: String) -> ())) {
         DispatchQueue.global(qos: .default).async {
             let pinyinAcronym = self.toPinyinAcronym(withFormat: outputFormat, separator: separator)
             DispatchQueue.main.async {
@@ -70,7 +70,7 @@ public extension String {
         }
     }
 
-    public var hasChineseCharacter: Bool {
+    var hasChineseCharacter: Bool {
         for unicodeScalar in unicodeScalars {
             let charCodePoint = unicodeScalar.value
             if HanziPinyin.isHanzi(ofCharCodePoint: charCodePoint) {

@@ -13,7 +13,7 @@ private struct CacheKeys {
 }
 
 internal extension HanziPinyin {
-    internal func initializeResource() -> [String: String] {
+    func initializeResource() -> [String: String] {
         if let cachedPinyinTable = HanziPinyin.cachedObject(forKey: CacheKeys.unicodeToPinyin) as? [String: String] {
             return cachedPinyinTable
         } else {

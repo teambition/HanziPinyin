@@ -9,7 +9,7 @@
 import Foundation
 
 internal struct HanziCodePoint {
-    static let start:UInt32 = 0x4E00
+    static let start: UInt32 = 0x4E00
     static let end: UInt32 = 0x9FFF
 }
 
