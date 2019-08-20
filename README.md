@@ -10,6 +10,16 @@ Specify "HanziPinyin" in your ```Cartfile```:
 github "teambition/HanziPinyin"
 ```
 
+### CocoaPods
+Specify "HanziPinyin" in your ```Podfile```:
+```ruby 
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'HanziPinyin'
+```
+
 ### Usage
 #### Pinyin output format
 ```swift
