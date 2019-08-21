@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HanziPinyin"
-  s.version      = "0.0.9"
+  s.version      = "1.0.0"
   s.summary      = "A lightweight Swift library supporting convertion between Chinese(both Simplified and Tranditional) characters and Pinyin."
 
   s.homepage     = "https://github.com/teambition/HanziPinyin"

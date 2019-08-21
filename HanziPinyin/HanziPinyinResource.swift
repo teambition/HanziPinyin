@@ -13,11 +13,18 @@ private struct CacheKeys {
 }
 
 internal extension HanziPinyin {
+    private var podResourceBundle: Bundle? {
+        guard let bundleURL = Bundle(for: WhateverClass.self).url(forResource: "HanziPinyin", withExtension: "bundle") else {
+            return nil
+        }
+        return Bundle(url: bundleURL)
+    }
+
     func initializeResource() -> [String: String] {
         if let cachedPinyinTable = HanziPinyin.cachedObject(forKey: CacheKeys.unicodeToPinyin) as? [String: String] {
             return cachedPinyinTable
         } else {
-            let resourceBundle = Bundle(identifier: "Teambition.HanziPinyin") ?? Bundle.main
+            let resourceBundle = podResourceBundle ?? Bundle(for: WhateverClass.self)
             guard let resourcePath = resourceBundle.path(forResource: "unicode_to_hanyu_pinyin", ofType: "txt") else {
                 return [:]
             }

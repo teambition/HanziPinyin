@@ -14,6 +14,8 @@ internal struct HanziCodePoint {
 }
 
 internal struct HanziPinyin {
+    internal class WhateverClass { }
+
     internal static let sharedInstance = HanziPinyin()
     internal fileprivate(set) var unicodeToPinyinTable = [String: String]()
 
